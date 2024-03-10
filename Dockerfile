@@ -19,6 +19,7 @@ COPY .yarn .yarn
 COPY packages packages
 COPY plugins-bundled plugins-bundled
 
+#RUN yarn cache clean
 RUN yarn install --immutable
 
 COPY tsconfig.json .eslintrc .editorconfig .browserslistrc .prettierrc.js babel.config.json .linguirc ./
@@ -48,10 +49,10 @@ COPY go.* ./
 COPY .bingo .bingo
 
 RUN go mod download
-RUN if [[ "$BINGO" = "true" ]]; then \
-      go install github.com/bwplotka/bingo@latest && \
-      bingo get -v; \
-    fi
+#RUN if [[ "$BINGO" = "true" ]]; then \
+#      go install github.com/bwplotka/bingo@latest && \
+#      bingo get -v; \
+#    fi
 
 COPY embed.go Makefile build.go package.json ./
 COPY cue.mod cue.mod
@@ -75,7 +76,8 @@ FROM ${BASE_IMAGE} as tgz-builder
 
 WORKDIR /tmp/grafana
 
-ARG GRAFANA_TGZ="grafana-latest.linux-x64-musl.tar.gz"
+#ARG GRAFANA_TGZ="grafana-latest.linux-x64-musl.tar.gz"
+ARG GRAFANA_TGZ="grafana-enterprise-10.1.1.linux-amd64.tar.gz"
 
 COPY ${GRAFANA_TGZ} /tmp/grafana.tar.gz
 
@@ -167,6 +169,14 @@ RUN if [ ! $(getent group "$GF_GID") ]; then \
 COPY --from=go-src /tmp/grafana/bin/grafana* /tmp/grafana/bin/*/grafana* ./bin/
 COPY --from=js-src /tmp/grafana/public ./public
 COPY --from=go-src /tmp/grafana/LICENSE ./
+
+# custom packaging for docker image
+RUN rm -rf /usr/share/grafana/public/dashboards/*
+RUN rm /etc/grafana/grafana.ini
+
+COPY conf/grafana.ini /etc/grafana/grafana.ini
+COPY conf/provisioning/dashboards/dashboards.yaml /etc/grafana/provisioning/dashboards/
+COPY conf/provisioning/datasources/lumino-datasource.yaml /etc/grafana/provisioning/datasources/
 
 EXPOSE 3000
 

@@ -1,0 +1,11 @@
+apiVersion: 1
+
+providers:
+  - name: 'default'
+    orgId: 1
+    folder: 'System' # You can specify the folder name that will appear in the UI, or leave it as an empty string
+    type: file
+    disableDeletion: false
+    editable: true
+    options:
+      path: conf/provisioning/dashboards/System
