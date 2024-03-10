@@ -75,7 +75,8 @@ FROM ${BASE_IMAGE} as tgz-builder
 
 WORKDIR /tmp/grafana
 
-ARG GRAFANA_TGZ="grafana-latest.linux-x64-musl.tar.gz"
+#ARG GRAFANA_TGZ="grafana-latest.linux-x64-musl.tar.gz"
+ARG GRAFANA_TGZ="grafana-enterprise-10.4.0.linux-amd64.tar.gz"
 
 COPY ${GRAFANA_TGZ} /tmp/grafana.tar.gz
 
