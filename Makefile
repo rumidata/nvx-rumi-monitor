@@ -34,6 +34,10 @@ node_modules: package.json yarn.lock ## install node modules
 	@echo "install frontend dependencies"
 	YARN_ENABLE_PROGRESS_BARS=false yarn install --immutable
 
+rumi-fe: ## Install frontend assets.
+	@echo "install frontend"
+	yarn install
+
 ##@ Swagger
 SPEC_TARGET = public/api-spec.json
 MERGED_SPEC_TARGET := public/api-merged.json
