@@ -30,13 +30,9 @@ deps-js: node_modules ## Install frontend dependencies.
 
 deps: deps-js ## Install all dependencies.
 
-# node_modules: package.json yarn.lock ## Install node modules.
-# 	@echo "install frontend dependencies"
-# 	YARN_ENABLE_PROGRESS_BARS=false yarn install --immutable
-
-node_modules: package.json 
+node_modules: package.json yarn.lock ## install node modules
 	@echo "install frontend dependencies"
-	YARN_ENABLE_PROGRESS_BARS=false yarn install
+	YARN_ENABLE_PROGRESS_BARS=false yarn install --immutable
 
 ##@ Swagger
 SPEC_TARGET = public/api-spec.json
