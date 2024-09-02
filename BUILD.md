@@ -1,30 +1,40 @@
 # Build Docker Image from Source
 
+The Docker image has been built using the AMI `ami-080e1f13689e07408`. It was tested on the same machine and additionally 
+on a RHEL-7.9 machine equipped with `Kernel 3.10` and `glibc 2.17`. In theory, the Docker image is designed to be built 
+on any AMD64 Linux machine and should operate seamlessly across various clients, including both OS X and Windows.
+
 1. Download the tarball by running the following command on your Ubuntu server:
 
-   ```shell
-   wget https://dl.grafana.com/enterprise/release/grafana-enterprise-10.4.0.linux-amd64.tar.gz
-
-   ```
+```shell
+$ wget https://dl.grafana.com/enterprise/release/grafana-enterprise-10.1.1.linux-amd64.tar.gz
+```
 
 2. Modify the GRAFANA_TGZ build an argument in your Dockerfile:
 
 ```shell
-ARG GRAFANA_TGZ="grafana-enterprise-10.4.0.linux-amd64.tar.gz"
+ARG GRAFANA_TGZ="grafana-enterprise-10.1.1.linux-amd64.tar.gz"
 ```
 
 3. Build the docker image using the command:
 
 ```shell
-docker build -t neeve/nvx-rumi-monitor:latest .
-docker tag neeve/nvx-rumi-monitor:latest neeve/nvx-rumi-monitor:latest
+$ docker build --no-cache -t neeve/nvx-rumi-monitor-10.1.1-1:latest .
+$ docker tag neeve/nvx-rumi-monitor-10.1.1-1:latest neeve/nvx-rumi-monitor-10.1.1-1:latest
 ```
 
 4. Login to DockerHub and push the image:
 
 ```shell
-docker login
-docker push neeve/nvx-rumi-monitor:latest
+$ docker login
+$ docker push neeve/nvx-rumi-monitor-10.1.1-1:latest
+```
+
+5. Pull the docker image and run it:
+
+```shell
+$ docker pull neeve/nvx-rumi-monitor-10.1.1-1:latest
+$ docker run -d -p 3000:3000 --network=host -v grafana-data:/var/lib/grafana neeve/nvx-rumi-monitor-10.1.1-1:latest
 ```
 
 # Custom Grafana Fork Management
@@ -91,12 +101,23 @@ By following this approach, you can maintain a custom version of Grafana while s
 
 # Build TarBall from Source
 
+The Tarball has been built using the AMI `ami-0eb1562e60d8375ee` and It was tested on the same machine that customer is
+using currently. The scripts for set up the environment and create the Tarball can be folder in the folder named 
+`tarball/CentOS-RHEL7.9_Kernel3.10_glibc2.17`. We also provided a script to build the Tarball in the newer machine, say,
+Ubuntu-22.04. Please, note that Tarball can't be run in a machine that has lower `glibc` and `Karnel` than where it's build.
+
 ## Prepare the environment
 
 We will need NodeJS, npm, yarn and Golang for the tarball creation. If you already have these in machine, it might be better to remove them to proceed. Then, run the shell script,
 
 ```shell
-$ ./tarball/tarball_env_setup.sh
+$ ./tarball/CentOS-RHEL7.9_Kernel3.10_glibc2.17/tarball_env_setup.sh
+```
+
+## Refresh the terminal 
+
+```shell
+source $HOME/.profile
 ```
 
 ## Create the tarball
@@ -104,7 +125,7 @@ $ ./tarball/tarball_env_setup.sh
 Please, run the shell script to craete the tarball,
 
 ```shell
-$ ./tarball/tarball_create.sh
+$ ./tarball/CentOS-RHEL7.9_Kernel3.10_glibc2.17/tarball_create.sh
 ```
 
 ## Run the Rumi monitor
