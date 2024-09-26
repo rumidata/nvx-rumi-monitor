@@ -1565,7 +1565,7 @@
           "custom": {
             "axisCenteredZero": false,
             "axisColorMode": "text",
-            "axisLabel": "",
+            "axisLabel": "Memory",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -1954,7 +1954,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "e8057bed-749f-4616-9579-2005d068cb1f"
+            "uid": "${datasource}"
           },
           "description": "When binary heartbeat logging is enabled for the XVM, this table displays binary heartbeat logging statistics from the last heartbeat received from the XVM. \n\n* **Commits**: The number of times the logger has been committed.\n* **Heartbeats Logged**: The number of heartbeats logged to the file. \n* **File Size**: The size of the file in on disk. \n* **File Size Used**: The size of the file that is used (which may be less than File Size if the file was preallocated). \n*  **Average Entry Size**: The average size of entries logged.",
           "fieldConfig": {
@@ -1963,6 +1963,7 @@
                 "mode": "thresholds"
               },
               "custom": {
+                "align": "auto",
                 "cellOptions": {
                   "type": "auto"
                 },
@@ -2118,12 +2119,12 @@
             },
             "showHeader": true
           },
-          "pluginVersion": "10.1.1",
+          "pluginVersion": "10.1.0",
           "targets": [
             {
               "datasource": {
                 "type": "influxdb",
-                "uid": "e8057bed-749f-4616-9579-2005d068cb1f"
+                "uid": "${datasource}"
               },
               "dsType": "influxdb",
               "groupBy": [
@@ -2165,7 +2166,7 @@
             {
               "datasource": {
                 "type": "influxdb",
-                "uid": "e8057bed-749f-4616-9579-2005d068cb1f"
+                "uid": "${datasource}"
               },
               "dsType": "influxdb",
               "groupBy": [
@@ -2254,13 +2255,6 @@
               {
                 "matcher": {
                   "id": "byName",
-                  "options": "Time"
-                },
-                "properties": []
-              },
-              {
-                "matcher": {
-                  "id": "byName",
                   "options": "Metric"
                 },
                 "properties": [
@@ -2341,7 +2335,7 @@
             "showHeader": true,
             "sortBy": []
           },
-          "pluginVersion": "10.1.1",
+          "pluginVersion": "10.1.0",
           "targets": [
             {
               "datasource": {
@@ -2930,6 +2924,6 @@
   "timezone": "browser",
   "title": "VM",
   "uid": "-u-KrYh7z",
-  "version": 2,
+  "version": 5,
   "weekStart": ""
 }
