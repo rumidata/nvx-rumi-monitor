@@ -105,7 +105,9 @@ Changes are made for the UI to ensure the branding for the Rumi Monitor and the 
         ├── Rumi_Blue.svg
         ├── Rumi_White.svg
         ├── Rumi_Yellow.png
-        └── Rumi_Yellow.svg
+        ├── Rumi_Yellow.svg
+        ├── g8_login_light.svg
+        └── g8_login_dark.svg
 ```
 
 ## TarBall Environment Setup and Creation
