@@ -21435,9 +21435,9 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "nvx-datafye-hwai-system",
-          "value": "nvx-datafye-hwai-system"
+          "selected": true,
+          "text": "nvx-lumino-agent",
+          "value": "nvx-lumino-agent"
         },
         "datasource": {
           "type": "influxdb",
@@ -21464,8 +21464,8 @@
         "allFormat": "glob",
         "current": {
           "selected": false,
-          "text": "datafye-hwai-feed",
-          "value": "datafye-hwai-feed"
+          "text": "lumino-agent-vm",
+          "value": "lumino-agent-vm"
         },
         "datasource": {
           "type": "influxdb",
