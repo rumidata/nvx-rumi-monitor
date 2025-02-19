@@ -65,7 +65,7 @@ COPY conf/grafana.ini /etc/grafana/grafana.ini
 
 ```dockerfile
 COPY conf/provisioning/dashboards/dashboards.yaml /etc/grafana/provisioning/dashboards/
-COPY conf/provisioning/datasources/lumino-datasource.yaml /etc/grafana/provisioning/datasources/
+COPY conf/provisioning/datasources/rumi-datasource.yaml /etc/grafana/provisioning/datasources/
 ```
 
 These changes made to customizing the Grafana installation within the Docker image, for using specific configuration and set of dashboards/data sources that are tailored for Rumi monitor.
@@ -85,7 +85,7 @@ These changes made to customizing the Grafana installation within the Docker ima
     │   │   │   └── vm.json
     │   │   ├── dashboards.yaml
     │   ├── datasources
-    │   │   ├── lumino-datasource.yaml
+    │   │   ├── rumi-datasource.yaml
 ```
 
 ## Branding

@@ -176,7 +176,7 @@ RUN rm /etc/grafana/grafana.ini
 
 COPY conf/grafana.ini /etc/grafana/grafana.ini
 COPY conf/provisioning/dashboards/dashboards.yaml /etc/grafana/provisioning/dashboards/
-COPY conf/provisioning/datasources/lumino-datasource.yaml /etc/grafana/provisioning/datasources/
+COPY conf/provisioning/datasources/rumi-datasource.yaml /etc/grafana/provisioning/datasources/
 
 EXPOSE 3000
 

@@ -1,11 +1,11 @@
 apiVersion: 1
 
 datasources:
-  - name: lumino
+  - name: rumi
     type: influxdb
     access: proxy
     url: http://admin.rumi.local:8086
-    database: lumino
+    database: rumi
     user: root
     jsonData:
       httpMode: GET
