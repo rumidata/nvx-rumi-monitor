@@ -4,7 +4,7 @@ datasources:
   - name: rumi
     type: influxdb
     access: proxy
-    url: http://admin.rumi.local:8086
+    url: http://influxdb.rumi.local:8086
     database: rumi
     user: root
     jsonData:
